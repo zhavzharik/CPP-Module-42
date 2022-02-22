@@ -2,43 +2,30 @@
 # define CONTACT_HPP
 
 # include <iostream>
+# include <string>
+# include <iomanip>
 
 class Contact
 {
 private:
-	/*int		_privateFoo;
-	void	_privateBar( void )const;
-	int		_foo;
-	static int		_nbInst;*/
+
+	std::string	_fName;
+	std::string	_lName;
+	std::string	_nName;
+	std::string	_phNb;
+	std::string	_secret;
+	int			_indx;
 
 public:
-
-	/*float const	pi;
-	int			qd;
-	int			publicFoo;
-
-	Contact(char p1, int p2, float p3);
-	Contact( float const f);*/
-
-	int	foo;
 
 	Contact( void );
 	~Contact( void );
 
-	void	bar( void ) const;
-
-	/*
-	static int	getNbInst( void );
-
-
-	int		getFoo( void ) const;
-	int		compare( Contact * other) const;
-
-	void	setFoo( int v );
-
-	void	bar( void ) const;
-	void	publicBar( void ) const;*/
-
+	void	setIndx( int v);
+	void	setContact( void );
+	void	showColumn( std::string str, int flag ) const;
+	void	show( void )const;
+	void	displayContact( void );
 };
 
 

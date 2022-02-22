@@ -1,24 +1,90 @@
 #include "Contact.hpp"
 
-Contact::Contact( void ) : foo( 0 )
-{
-	std::cout << "Constructor called" << std::endl;
+Contact::Contact( void ){
+
+	std::cout << "Constructor ContactClass called" << std::endl;
 	return;
 }
 
-Contact::~Contact()
-{
-	std::cout << "Destructor called" << std::endl;
+Contact::~Contact(){
+	std::cout << "Destructor ContactClass called" << std::endl;
 	return;
 }
 
+void	Contact::setIndx( int v){
+
+	if (v >= 0)
+		this->_indx = v;
+
+	return;
+}
+
+void	Contact::setContact( void ){
+
+	std::cout << "Input first name: ";
+	std::cin >> this->_fName;
+	std::cout << "Input last name: ";
+	std::cin >> this->_lName;
+	std::cout << "Input nickname: ";
+	std::cin >> this->_nName;
+	std::cout << "Input phone number: ";
+	std::cin >> this->_phNb;
+	std::cout << "Input darkest secret: ";
+	std::cin >> this->_secret;
+
+	return;
+}
+
+void	Contact::showColumn( std::string str, int flag ) const{
+
+	if (str.length() > 10){
+		std::cout << std::right  << std::setw(9) << str.substr(0, 9);
+		std::cout << std::right  << ".";
+	}
+	else
+		std::cout << std::right << str;
+	if (flag == 1)
+		std::cout << std::right << " | ";
+
+	return;
+}
+
+void	Contact::show( void )const{
+
+	std::cout << std::right  << std::setw(10) << this->_indx << " | ";
+	this->showColumn(this->_fName, 1);
+	this->showColumn(this->_lName, 1);
+	this->showColumn(this->_nName, 0);
+	std::cout << std::endl;
+
+	return;
+}
+
+void	Contact::displayContact( void ){
+
+	std::cout << this->_indx << std::endl;
+	std::cout << this->_fName << std::endl;
+	std::cout << this->_lName << std::endl;
+	std::cout << this->_nName << std::endl;
+	std::cout << this->_phNb << std::endl;
+	std::cout << this->_secret << std::endl;
+
+	return;
+
+}
+
+
+
+
+
+
+
+/*
 void	Contact::bar( void ) const{
 	std::cout << "Member function bar called" << std::endl;
 	return;
 }
 
-
-/*
 Contact::Contact( void )
 {
 	std::cout << "Constructor called" << std::endl;

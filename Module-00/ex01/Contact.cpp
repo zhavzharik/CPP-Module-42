@@ -2,12 +2,11 @@
 
 Contact::Contact( void ){
 
-	std::cout << "Constructor ContactClass called" << std::endl;
 	return;
 }
 
 Contact::~Contact(){
-	std::cout << "Destructor ContactClass called" << std::endl;
+	
 	return;
 }
 
@@ -38,13 +37,13 @@ void	Contact::setContact( void ){
 void	Contact::showColumn( std::string str, int flag ) const{
 
 	if (str.length() > 10){
-		std::cout << std::right  << std::setw(9) << str.substr(0, 9);
-		std::cout << std::right  << ".";
+		std::cout << std::setw(9) << str.substr(0, 9);
+		std::cout << ".";
 	}
 	else
-		std::cout << std::right << str;
+		std::cout << std::setw(10) << str;
 	if (flag == 1)
-		std::cout << std::right << " | ";
+		std::cout << " | ";
 
 	return;
 }
@@ -62,12 +61,12 @@ void	Contact::show( void )const{
 
 void	Contact::displayContact( void ){
 
-	std::cout << this->_indx << std::endl;
-	std::cout << this->_fName << std::endl;
-	std::cout << this->_lName << std::endl;
-	std::cout << this->_nName << std::endl;
-	std::cout << this->_phNb << std::endl;
-	std::cout << this->_secret << std::endl;
+	std::cout << "The contact information: " << std::endl;
+	std::cout << std::left << std::setw(18) << "First name: " << this->_fName << std::endl;
+	std::cout << std::left << std::setw(18) << "Last name: " << this->_lName << std::endl;
+	std::cout << std::left << std::setw(18) << "Nickname: " << this->_nName << std::endl;
+	std::cout << std::left << std::setw(18) << "Phone number: " << this->_phNb << std::endl;
+	std::cout << std::left << std::setw(18) << "Darkest secret: " << this->_secret << std::endl;
 
 	return;
 

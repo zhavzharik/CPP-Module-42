@@ -1,65 +1,85 @@
 #include "PhoneBook.hpp"
 
-PhoneBook::PhoneBook(void) : _counter(0), _index(0), _flag(0){
-
-	std::cout << "Constructor PhoneBook called" << std::endl;
-	/*this->_counter = 0;*/
+PhoneBook::PhoneBook(void) : _counter(-1), _amount(0), _index(0), _flag(true), _startFlag(0){
 
 	return;
 }
 
 PhoneBook::~PhoneBook(void){
 
-	std::cout << "Destructor PhoneBook called" << std::endl;
-
 	return;
 }
 
 void	PhoneBook::add(void){
-	std::cout << "Function add called" << std::endl;
-	this->_counter += 1; // add check and delete function, if counter > 8
-	Contact		x;
-	/*Contact*	pt = &x;*/
-	x.setIndx( this->_counter);
-	x.setContact();
-	/*this->_contacts[this->_counter - 1] = x;*/
 
+	this->_startFlag = 0;
+	this->_counter = (this->_counter + 1) % 8;
+	if (this->_amount < this->_counter)
+		this->_amount = this->_counter;
+	this->_contacts[this->_counter].setIndx( this->_counter + 1);
+	this->_contacts[this->_counter].setContact();
 
 	return;
 }
 
 void	PhoneBook::requestIndex( void ){
 
-	std::cout << "Please input the index of the entry to display: " << std::endl;
-	std::cin >> this->_userInput;
-	while (this->_flag == 0){
+	std::cout << "Please input the index of the entry to display: ";
+	while (true){
 
-		if (this->_userInput < 1 && this->_userInput > this->_counter){
+		this->_flag = true;
+		std::cin >> this->_userInput;
+		for(size_t i = 0; i < this->_userInput.length(); i++){
 
-			std::cout << "The index is out of range. Please input positive number up to and including ";
-			std::cout << this->_counter << std::endl;
-			std::cin >> this->_userInput;
+			if (this->_userInput.at(i) != '0' && this->_userInput.at(i) != '1'
+				&& this->_userInput.at(i) != '2' && this->_userInput.at(i) != '3'
+				&& this->_userInput.at(i) != '4' && this->_userInput.at(i) != '5'
+				&& this->_userInput.at(i) != '6' && this->_userInput.at(i) != '7'
+				&& this->_userInput.at(i) != '8' && this->_userInput.at(i) != '9'){
+
+					this->_flag = false;
+					std::cout << "Wrong input. Please input positive number up to and including ";
+					std::cout << this->_counter + 1 << ": ";
+					std::cin.ignore(32767, '\n');
+					break;
+				}
 		}
-		else{
+		if (this->_flag){
 
-			this->_contacts[this->_userInput - 1].displayContact();
-			this->_flag = 1;
+			this->_res = atoi(this->_userInput.c_str());
+			std::cin.ignore(32767, '\n');
+			if (this->_res < 1 || this->_res > this->_counter + 1){
+
+				std::cout << "The index is out of range. Please input positive number up to and including ";
+				std::cout << this->_counter + 1 << ": ";
+				this->_flag = false;
+				std::cin.ignore(32767, '\n');
+				break;
+			}
+			else{
+
+				this->_contacts[this->_res - 1].displayContact();
+				return;
+			}
 		}
 	}
-
 	return;
 }
 
 void	PhoneBook::search( void ){
 
-	/*std::cout << "The saved contacts: " << std::endl;
-	while (this->_index <= this->_counter){
+	this->_startFlag = 0;
+	this->_index = 0;
+	if (this->_counter == -1)
+		std::cout << "Empty book." << std::endl;
+	else{
+		while (this->_index <= this->_amount){
 
-		this->_contacts[this->_index].show();
-		this->_index += 1;
-	}*/
-	this->_index += 1;
-	this->requestIndex();
+			this->_contacts[this->_index].show();
+			this->_index += 1;
+		}
+		this->requestIndex();
+	}
 
 	return;
 }
@@ -74,8 +94,11 @@ void	PhoneBook::start( void ){
 	std::cout << std::right  << std::setw(20) << "PHONEBOOK" << std::endl;
 	while ( 1 ){
 
-		std::cout << "Please input ADD, SEARCH or EXIT !" << std::endl;
-		std::cin >> this->_answer;
+		if (this->_startFlag == 0){
+
+			std::cout << "Please input ADD, SEARCH or EXIT: ";
+			std::cin >> this->_answer;
+		}
 		if (this->_answer == "ADD")
 			this->add();
 		else if (this->_answer == "SEARCH")
@@ -84,8 +107,9 @@ void	PhoneBook::start( void ){
 			this->exit_program();
 		else{
 
-			std::cout << "Wrong input! The program only accepts ADD, SEARCH or EXIT !" << std::endl;
+			std::cout << "Wrong input! The program only accepts ADD, SEARCH or EXIT: ";
 			std::cin >> this->_answer;
+			this->_startFlag = 1;
 		}
 
 	}

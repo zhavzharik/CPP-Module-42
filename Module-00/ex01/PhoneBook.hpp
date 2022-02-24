@@ -12,11 +12,14 @@ class PhoneBook
 private:
 
 	int			_counter;
-	Contact*	_contacts;
+	int			_amount;
+	Contact		_contacts[8];
 	int			_index;
 	std::string	_answer;
-	int			_userInput;
-	int			_flag;
+	std::string	_userInput;
+	int			_res;
+	bool		_flag;
+	int			_startFlag;
 
 public:
 

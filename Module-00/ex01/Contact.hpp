@@ -23,8 +23,8 @@ public:
 
 	void	setIndx( int v);
 	void	setContact( void );
-	void	showColumn( std::string str, int flag ) const;
-	void	show( void )const;
+	void	showColumn( std::string str, int flag );
+	void	show( void );
 	void	displayContact( void );
 };
 

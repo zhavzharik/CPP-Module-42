@@ -34,7 +34,7 @@ void	Contact::setContact( void ){
 	return;
 }
 
-void	Contact::showColumn( std::string str, int flag ) const{
+void	Contact::showColumn( std::string str, int flag ) {
 
 	if (str.length() > 10){
 		std::cout << std::setw(9) << str.substr(0, 9);
@@ -48,9 +48,9 @@ void	Contact::showColumn( std::string str, int flag ) const{
 	return;
 }
 
-void	Contact::show( void )const{
+void	Contact::show( void ){
 
-	std::cout << std::right  << std::setw(10) << this->_indx << " | ";
+	std::cout << std::right << std::setw(10) << this->_indx << " | ";
 	this->showColumn(this->_fName, 1);
 	this->showColumn(this->_lName, 1);
 	this->showColumn(this->_nName, 0);

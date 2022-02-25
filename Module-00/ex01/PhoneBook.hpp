@@ -18,8 +18,9 @@ private:
 	std::string	_answer;
 	std::string	_userInput;
 	int			_res;
-	bool		_flag;
-	int			_startFlag;
+	int			_flagInput;
+	int			_flagStart;
+	int			_flagSearch;
 
 public:
 
@@ -31,6 +32,7 @@ public:
 	void	search( void );
 	void	exit_program( void );
 	void	requestIndex( void );
+	void	printTitle( void );
 };
 
 

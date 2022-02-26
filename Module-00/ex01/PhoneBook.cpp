@@ -38,7 +38,7 @@ void	PhoneBook::requestIndex( void ){
 
 					this->_flagInput = 0;
 					std::cout << "Wrong input. Please input positive number up to and including ";
-					std::cout << this->_counter + 1 << ": ";
+					std::cout << this->_amount + 1 << ": ";
 					std::cin.ignore(32767, '\n');
 					break;
 				}

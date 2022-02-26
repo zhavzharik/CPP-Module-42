@@ -16,6 +16,8 @@ private:
 	std::string	_secret;
 	int			_indx;
 
+	void	showColumn( std::string str, int flag );
+
 public:
 
 	Contact( void );
@@ -23,7 +25,7 @@ public:
 
 	void	setIndx( int v);
 	void	setContact( void );
-	void	showColumn( std::string str, int flag );
+	//void	showColumn( std::string str, int flag );
 	void	show( void );
 	void	displayContact( void );
 };

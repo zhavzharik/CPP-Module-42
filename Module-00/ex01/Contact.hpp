@@ -25,7 +25,6 @@ public:
 
 	void	setIndx( int v);
 	void	setContact( void );
-	//void	showColumn( std::string str, int flag );
 	void	show( void );
 	void	displayContact( void );
 };

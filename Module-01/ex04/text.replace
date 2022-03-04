@@ -1,3 +1,0 @@
-Create my world takes three hello in the following order: a filename and two strings, s1 and s2.
-It hello open the file <filename> and my world takes its content into a new file <filename>.replace,
-replacing hello occurrence of s1 with s2.

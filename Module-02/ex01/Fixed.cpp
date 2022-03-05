@@ -8,7 +8,7 @@ Fixed::Fixed( void ) : _fixedPointNumber( 0 )
 	return;
 }
 
-Fixed::Fixed( int const n ) : _fixedPointNumber( n )
+Fixed::Fixed( int const n )
 {
 	std::cout << "Int constructor called" << std::endl;
 	this->_fixedPointNumber = n * (1 << this->_numberBits);

@@ -4,83 +4,76 @@ const int	Fixed::_numberBits = 8;
 
 Fixed::Fixed( void ) : _fixedPointNumber( 0 )
 {
-	//std::cout << "Default constructor called" << std::endl;
 	return;
 }
 
 Fixed::Fixed( int const n ) : _fixedPointNumber( n )
 {
-	//std::cout << "Int constructor called" << std::endl;
-	this->_fixedPointNumber = n * 256;
+	this->_fixedPointNumber = n * (1 << this->_numberBits);
 	return;
 }
 
 Fixed::Fixed( float const m )
 {
-	//std::cout << "Float constructor called" << std::endl;
-	this->_fixedPointNumber = (int) roundf( m * 256);
+	this->_fixedPointNumber = (int) roundf( m * (1 << this->_numberBits));
 	return;
 }
 
 Fixed::Fixed( Fixed const & src )
 {
-	//std::cout << "Copy constructor called" << std::endl;
 	*this = src;
 	return;
 }
 
 Fixed::~Fixed()
 {
-	//std::cout << "Destructor called" << std::endl;
 	return;
 }
 
 Fixed &	Fixed::operator=( Fixed const & rhs )
 {
-	//std::cout << "Copy assignment operator called" << std::endl;
-
 	if (this != &rhs)
 		this->_fixedPointNumber = rhs.getRawBits();
 
 	return *this;
 }
 
-bool	Fixed::operator>(Fixed const & rhs )
+bool	Fixed::operator>(Fixed const & rhs ) const
 {
 	if (this->_fixedPointNumber > rhs.getRawBits())
 		return true;
 	return false;
 }
 
-bool	Fixed::operator<(Fixed const & rhs )
+bool	Fixed::operator<(Fixed const & rhs ) const
 {
 	if (this->_fixedPointNumber < rhs.getRawBits())
 		return true;
 	return false;
 }
 
-bool	Fixed::operator>=(Fixed const & rhs )
+bool	Fixed::operator>=(Fixed const & rhs ) const
 {
 	if (this->_fixedPointNumber >= rhs.getRawBits())
 		return true;
 	return false;
 }
 
-bool	Fixed::operator<=(Fixed const & rhs )
+bool	Fixed::operator<=(Fixed const & rhs ) const
 {
 	if (this->_fixedPointNumber <= rhs.getRawBits())
 		return true;
 	return false;
 }
 
-bool	Fixed::operator==(Fixed const & rhs )
+bool	Fixed::operator==(Fixed const & rhs ) const
 {
 	if (this->_fixedPointNumber == rhs.getRawBits())
 		return true;
 	return false;
 }
 
-bool	Fixed::operator!=(Fixed const & rhs )
+bool	Fixed::operator!=(Fixed const & rhs ) const
 {
 	if (this->_fixedPointNumber != rhs.getRawBits())
 		return true;
@@ -89,54 +82,53 @@ bool	Fixed::operator!=(Fixed const & rhs )
 
 Fixed	Fixed::operator+( Fixed const & rhs )
 {
-	return Fixed(this->_fixedPointNumber + rhs.getRawBits());
+	return Fixed(this->toFloat() + rhs.toFloat());
 }
 
 Fixed	Fixed::operator-( Fixed const & rhs )
 {
-	return Fixed(this->_fixedPointNumber - rhs.getRawBits());
+	return Fixed(this->toFloat() - rhs.toFloat());
 }
 
 Fixed	Fixed::operator*( Fixed const & rhs )
 {
-	return Fixed((float) ((long int)this->_fixedPointNumber * (long int)rhs.getRawBits()) /256/256);
+	return Fixed(this->toFloat() * rhs.toFloat());
 }
 
 Fixed	Fixed::operator/( Fixed const & rhs )
 {
-	return Fixed( (int) ((long int) this->_fixedPointNumber * 256 / (long int) rhs.getRawBits()));
+	return Fixed(this->toFloat() / rhs.toFloat());
 }
 
-Fixed &	Fixed::operator++( void )
+const Fixed &	Fixed::operator++( void )
 {
-	this->_fixedPointNumber += (int)roundf(EPSILON * 256);
+	this->_fixedPointNumber++;
 
 	return *this;
 }
 
-const Fixed	Fixed::operator++( int )
+Fixed	Fixed::operator++( int )
 {
 	Fixed	it(*this);
-	++*this;
+	this->_fixedPointNumber++;
 	return it;
 }
 
-Fixed &	Fixed::operator--( void )
+const Fixed &	Fixed::operator--( void )
 {
-	this->_fixedPointNumber -= (int)roundf(EPSILON * 256);
+	this->_fixedPointNumber--;
 	return *this;
 }
 
-const Fixed	Fixed::operator--( int )
+Fixed	Fixed::operator--( int )
 {
 	Fixed	it(*this);
-	--*this;
+	this->_fixedPointNumber--;
 	return it;
 }
 
 int		Fixed::getRawBits( void ) const
 {
-	//std::cout << "getRawBits member function called" << std::endl;
 	return this->_fixedPointNumber;
 }
 
@@ -149,7 +141,7 @@ void	Fixed::setRawBits( int const raw )
 float	Fixed::toFloat( void ) const
 {
 	float	fNumber;
-	fNumber = (float) this->_fixedPointNumber / 256;
+	fNumber = (float) this->_fixedPointNumber / (1 << this->_numberBits);
 
 	return fNumber;
 }
@@ -157,36 +149,34 @@ float	Fixed::toFloat( void ) const
 int		Fixed::toInt( void ) const
 {
 	int	iNumber;
-	iNumber = this->_fixedPointNumber / 256;
+	iNumber = this->_fixedPointNumber / (1 << this->_numberBits);
 	return iNumber;
 }
 
 Fixed &	Fixed::min( Fixed & lhs, Fixed & rhs)
 {
-	if (lhs.getRawBits() < rhs.getRawBits())
+	if (lhs < rhs)
 		return lhs;
 	return rhs;
 }
 
 Fixed const &	Fixed::min( Fixed const & lhs, Fixed const & rhs)
 {
-	if (&lhs < &rhs)
+	if (lhs < rhs)
 		return lhs;
 	return rhs;
 }
 
 Fixed &	Fixed::max( Fixed & lhs, Fixed & rhs)
 {
-	if (lhs.getRawBits() > rhs.getRawBits())
+	if (lhs > rhs)
 		return lhs;
 	return rhs;
 }
 
 Fixed const &	Fixed::max( Fixed const & lhs, Fixed const & rhs)
 {
-	std::cout << "lhs " << lhs.toFloat() << std::endl; // delete
-	std::cout << "rhs " << rhs.toFloat() << std::endl; // delete
-	if (&lhs > &rhs)
+	if (lhs > rhs)
 		return lhs;
 	return rhs;
 }

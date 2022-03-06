@@ -2,7 +2,7 @@
 
 FragTrap::FragTrap( void )
 {
-	this->_name = "default name";
+	this->_name = "";
 	this->_hitPoints = 0;
 	this->_energyPoints = 0;
 	this->_attackDamage = 0;

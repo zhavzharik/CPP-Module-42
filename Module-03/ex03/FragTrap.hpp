@@ -5,6 +5,11 @@
 
 class FragTrap : virtual public ClapTrap
 {
+protected:
+
+	int	_hitPointsFrag;
+	int	_attackDamageFrag;
+
 public:
 
 	FragTrap( void );

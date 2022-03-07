@@ -3,9 +3,11 @@
 FragTrap::FragTrap( void )
 {
 	this->_name = "";
-	this->_hitPoints = 0;
-	this->_energyPoints = 0;
-	this->_attackDamage = 0;
+	this->_hitPoints = 100;
+	this->_hitPointsFrag = 100;
+	this->_energyPoints = 100;
+	this->_attackDamage = 30;
+	this->_attackDamageFrag = 30;
 	std::cout << "Default FragTrap constructor called. " << std::endl;
 	return;
 }
@@ -14,8 +16,10 @@ FragTrap::FragTrap( std::string name )
 {
 	this->_name = name;
 	this->_hitPoints = 100;
+	this->_hitPointsFrag = 100;
 	this->_energyPoints = 100;
 	this->_attackDamage = 30;
+	this->_attackDamageFrag = 30;
 	std::cout << "Parametric FragTrap constructor called. " << this->_name << " created." << std::endl;
 	return;
 }
@@ -38,7 +42,7 @@ FragTrap &	FragTrap::operator=( FragTrap const & rhs )
 	std::cout << "Assignement FragTrap operator called. ";
 	if (this != &rhs)
 	{
-		this->_name = rhs.getName().append(" of Schrodinger");
+		this->_name = rhs.getName() + " of Schrodinger";
 		this->_hitPoints = rhs.getHitPoints();
 		this->_energyPoints = rhs.getEnergyPoints();
 		this->_attackDamage = rhs.getAttackDamage();
@@ -65,6 +69,6 @@ void	FragTrap::attack( const std::string& target )
 
 void	FragTrap::highFivesGuys( void )
 {
-	std::cout << "FragTrap " << this->_name << " requests a positive high fives." << std::endl;
+	std::cout << "FragTrap " << this->_name << " says high fives." << std::endl;
 	return;
 }

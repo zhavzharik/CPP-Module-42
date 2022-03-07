@@ -2,10 +2,10 @@
 
 DiamondTrap::DiamondTrap( void )
 {
-	this->_name = "";
-	this->_hitPoints = 0;
-	this->_energyPoints = 0;
-	this->_attackDamage = 0;
+	ClapTrap::_name = this->_name + "_clap_name";
+	this->_hitPoints = _hitPointsFrag;
+	this->_energyPoints = _energyPointsScav;
+	this->_attackDamage = _attackDamageFrag;
 	std::cout << "Default DiamondTrap constructor called. " << std::endl;
 	return;
 }
@@ -14,9 +14,9 @@ DiamondTrap::DiamondTrap( const std::string &name )
 {
 	ClapTrap::_name = name + "_clap_name";
 	this->_name = name;
-	this->_hitPoints = FragTrap::_hitPoints;
-	this->_energyPoints = ScavTrap::_energyPoints;
-	this->_attackDamage = FragTrap::_attackDamage;
+	this->_hitPoints = _hitPointsFrag;
+	this->_energyPoints = _energyPointsScav;
+	this->_attackDamage = _attackDamageFrag;
 	std::cout << "Parametric DiamondTrap constructor called. " << this->_name << " created." << std::endl;
 	return;
 }
@@ -39,11 +39,10 @@ DiamondTrap &	DiamondTrap::operator=( DiamondTrap const & rhs )
 	std::cout << "Assignement DiamondTrap operator called. ";
 	if (this != &rhs)
 	{
-		this->_name = rhs.getName().append(" of Schrodinger");
+		this->_name = rhs._name + " of Schrodinger";
 		this->_hitPoints = rhs.getHitPoints();
 		this->_energyPoints = rhs.getEnergyPoints();
 		this->_attackDamage = rhs.getAttackDamage();
-		std::cout << this->_name << " created." << std::endl;
 	}
 	return *this;
 }
@@ -56,6 +55,6 @@ void	DiamondTrap::attack( const std::string& target )
 
 void	DiamondTrap::whoAmI( void )
 {
-	std::cout << "My name is " << this->_name << " and my Parents name is " << ClapTrap::_name << std::endl;
+	std::cout << "My name is " << this->_name << " and my Parents name is " << ClapTrap::_name << "." << std::endl;
 	return;
 }

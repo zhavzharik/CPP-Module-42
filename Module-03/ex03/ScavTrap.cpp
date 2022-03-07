@@ -5,6 +5,7 @@ ScavTrap::ScavTrap( void )
 	this->_name = "";
 	this->_hitPoints = 100;
 	this->_energyPoints = 50;
+	this->_energyPointsScav = 50;
 	this->_attackDamage = 20;
 	std::cout << "Default ScavTrap constructor called. " << std::endl;
 	return;
@@ -15,6 +16,7 @@ ScavTrap::ScavTrap( std::string name )
 	this->_name = name;
 	this->_hitPoints = 100;
 	this->_energyPoints = 50;
+	this->_energyPointsScav = 50;
 	this->_attackDamage = 20;
 	std::cout << "Parametric ScavTrap constructor called. " << this->_name << " created." << std::endl;
 	return;
@@ -38,7 +40,7 @@ ScavTrap &	ScavTrap::operator=( ScavTrap const & rhs )
 	std::cout << "Assignement ScavTrap operator called. ";
 	if (this != &rhs)
 	{
-		this->_name = rhs.getName().append(" of Schrodinger");
+		this->_name = rhs.getName() + " of Schrodinger";
 		this->_hitPoints = rhs.getHitPoints();
 		this->_energyPoints = rhs.getEnergyPoints();
 		this->_attackDamage = rhs.getAttackDamage();

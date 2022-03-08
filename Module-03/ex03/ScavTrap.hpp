@@ -7,11 +7,11 @@ class ScavTrap : virtual public ClapTrap
 {
 protected:
 
-	int	_energyPointsScav;
+	ScavTrap( void );
+	unsigned int	_energyPointsScav;
 
 public:
 
-	ScavTrap( void );
 	ScavTrap( std::string name );
 	ScavTrap( ScavTrap const & src );
 	~ScavTrap( void );

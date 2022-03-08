@@ -8,22 +8,22 @@ class ClapTrap
 {
 private:
 
+	ClapTrap( void );
 	std::string		_name;
-	int				_hitPoints;
-	int				_energyPoints;
-	int				_attackDamage;
+	unsigned int	_hitPoints;
+	unsigned int	_energyPoints;
+	unsigned int	_attackDamage;
 
 public:
 
-	ClapTrap( void );
 	ClapTrap(std::string name);
 	ClapTrap( ClapTrap const & src );
 	~ClapTrap( void );
 
-	std::string	getName( void ) const;
-	int			getHitPoints( void ) const;
-	int			getEnergyPoints( void ) const;
-	int			getAttackDamage( void ) const;
+	std::string		getName( void ) const;
+	unsigned int	getHitPoints( void ) const;
+	unsigned int	getEnergyPoints( void ) const;
+	unsigned int	getAttackDamage( void ) const;
 
 	ClapTrap &	operator=( ClapTrap const & rhs );
 

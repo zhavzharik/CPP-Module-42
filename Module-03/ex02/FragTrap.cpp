@@ -3,9 +3,9 @@
 FragTrap::FragTrap( void )
 {
 	this->_name = "default name";
-	this->_hitPoints = 0;
-	this->_energyPoints = 0;
-	this->_attackDamage = 0;
+	this->_hitPoints = 100;
+	this->_energyPoints = 100;
+	this->_attackDamage = 30;
 	std::cout << "Default FragTrap constructor called. " << std::endl;
 	return;
 }

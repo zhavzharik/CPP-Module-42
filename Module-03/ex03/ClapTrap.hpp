@@ -21,9 +21,9 @@ public:
 	~ClapTrap( void );
 
 	const std::string	&getName( void ) const;
-	int			getHitPoints( void ) const;
-	int			getEnergyPoints( void ) const;
-	int			getAttackDamage( void ) const;
+	unsigned int		getHitPoints( void ) const;
+	unsigned int		getEnergyPoints( void ) const;
+	unsigned int		getAttackDamage( void ) const;
 
 	ClapTrap &	operator=( ClapTrap const & rhs );
 

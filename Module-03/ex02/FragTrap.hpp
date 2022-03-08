@@ -5,9 +5,12 @@
 
 class FragTrap : public ClapTrap
 {
-public:
+private:
 
 	FragTrap( void );
+	
+public:
+
 	FragTrap( std::string name );
 	FragTrap( FragTrap const & src );
 	~FragTrap( void );

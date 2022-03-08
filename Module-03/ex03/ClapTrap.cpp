@@ -27,11 +27,11 @@ ClapTrap::~ClapTrap( void )
 
 const std::string	&ClapTrap::getName( void ) const { return _name; }
 
-int	ClapTrap::getHitPoints( void ) const { return _hitPoints; }
+unsigned int	ClapTrap::getHitPoints( void ) const { return _hitPoints; }
 
-int	ClapTrap::getEnergyPoints( void ) const { return _energyPoints; }
+unsigned int	ClapTrap::getEnergyPoints( void ) const { return _energyPoints; }
 
-int	ClapTrap::getAttackDamage( void ) const { return _attackDamage; }
+unsigned int	ClapTrap::getAttackDamage( void ) const { return _attackDamage; }
 
 ClapTrap &	ClapTrap::operator=( ClapTrap const & rhs )
 {

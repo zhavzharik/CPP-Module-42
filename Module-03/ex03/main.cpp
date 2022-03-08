@@ -21,7 +21,7 @@ int	main( void )
 
 	std::cout << a << std::endl;
 	a = c;
-	std::cout << "Lion after assignment." << std::endl;
+	std::cout << "After assignment:" << std::endl;
 	std::cout << a << std::endl;
 	a.takeDamage(7);
 	a.whoAmI();

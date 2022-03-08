@@ -7,12 +7,12 @@ class FragTrap : virtual public ClapTrap
 {
 protected:
 
-	int	_hitPointsFrag;
-	int	_attackDamageFrag;
+	FragTrap( void );
+	unsigned int	_hitPointsFrag;
+	unsigned int	_attackDamageFrag;
 
 public:
 
-	FragTrap( void );
 	FragTrap( std::string name );
 	FragTrap( FragTrap const & src );
 	~FragTrap( void );

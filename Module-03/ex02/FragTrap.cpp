@@ -42,7 +42,6 @@ FragTrap &	FragTrap::operator=( FragTrap const & rhs )
 		this->_hitPoints = rhs.getHitPoints();
 		this->_energyPoints = rhs.getEnergyPoints();
 		this->_attackDamage = rhs.getAttackDamage();
-		std::cout << this->_name << " created." << std::endl;
 	}
 	return *this;
 }

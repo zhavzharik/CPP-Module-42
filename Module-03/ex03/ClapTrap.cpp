@@ -64,12 +64,12 @@ void	ClapTrap::attack( const std::string& target )
 
 void	ClapTrap::takeDamage( unsigned int amount )
 {
-	std::cout << _name << " takes damage in amount of " << amount << " points. ";
+	std::cout << "ClapTrap " << _name << " takes damage in amount of " << amount << " points. ";
 	if (amount > _hitPoints)
 		_hitPoints = 0;
 	else
 		_hitPoints -= amount;
-	std::cout << _name << " has total " << _hitPoints << " hit points." << std::endl;
+	std::cout << "ClapTrap " << _name << " has total " << _hitPoints << " hit points." << std::endl;
 	if (_hitPoints == 0)
 		std::cout << "The health of " << _name << " is in critical condition!" << std::endl;
 
@@ -80,22 +80,22 @@ void	ClapTrap::beRepaired( unsigned int amount )
 {
 	if (_hitPoints > 0 && _energyPoints > 0)
 	{
-		std::cout << _name << " repairs itself, it gets " << amount << " hit points back. ";
+		std::cout << "ClapTrap " << _name << " repairs itself, it gets " << amount << " hit points back. ";
 		_energyPoints -= 1;
 		_hitPoints += amount;
-		std::cout << _name << " has total " << _hitPoints << " hit points." << std::endl;
+		std::cout << "ClapTrap " << _name << " has total " << _hitPoints << " hit points." << std::endl;
 	}
 	else
 	{
-		std::cout << _name << " can't repair itself because ";
-		std::cout << _name << " has no hit points or energy points left!" << std::endl;
+		std::cout << "ClapTrap " << _name << " can't repair itself because ";
+		std::cout << "ClapTrap " << _name << " has no hit points or energy points left!" << std::endl;
 	}
 	return;
 }
 
 std::ostream &	operator<<(std::ostream & o, ClapTrap const & i )
 {
-	o << i.getName() << " has " << i.getHitPoints() << " hit points, " << i.getEnergyPoints() << " energy points, " << i.getAttackDamage() << " attack damage. ";
+	o << "ClapTrap " << i.getName() << " has " << i.getHitPoints() << " hit points, " << i.getEnergyPoints() << " energy points, " << i.getAttackDamage() << " attack damage. ";
 	if (i.getHitPoints() > 0)
 		o << i.getName() << " is alive.";
 	else

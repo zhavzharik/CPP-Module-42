@@ -28,14 +28,29 @@ int	main()
 	const WrongAnimal* w_meta = new WrongAnimal();
 	const WrongAnimal* w_i = new WrongCat();
 
-
 	std::cout << w_i->getType() << " " << std::endl;
-
 	w_i->makeSound();
 	w_meta->makeSound();
+	std::cout << std::endl;
+
+	const WrongAnimal* w_j;
+
+	w_j = w_i;
+	std::cout << w_j->getType() << " " << std::endl;
+	w_j->makeSound();
+	w_meta->makeSound();
+	std::cout << std::endl;
+
+	const WrongAnimal* w_a = new WrongCat();
+
+	std::cout << w_a->getType() << " " << std::endl;
+	w_a->makeSound();
+	std::cout << std::endl;
 
 	delete w_i;
+	delete w_a;
 	delete w_meta;
+
 
 	return 0;
 }

@@ -11,7 +11,9 @@ Cat::Cat( void )
 Cat::Cat( Cat const & src )
 {
 	std::cout << "Copy Cat constructor called" << std::endl;
-	*this = src;
+	_ideasCat = new Brain();
+	_ideasCat = src._ideasCat;
+	type = src.getType();
 	return;
 }
 

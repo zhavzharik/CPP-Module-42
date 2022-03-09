@@ -1,14 +1,9 @@
 #include "Animal.hpp"
 
-Animal::Animal( void ) : type("Default name")
+Animal::Animal( void )
 {
-	std::cout << "Default Animal constructor called. " << std::endl;
-	return;
-}
-
-Animal::Animal( std::string	t ) : type( t )
-{
-	std::cout << "Parametric Animal constructor called. " << std::endl;
+	type = "Animal";
+	std::cout << "Default Animal constructor called." << std::endl;
 	return;
 }
 
@@ -23,12 +18,11 @@ Animal::~Animal( void )
 {
 	std::cout << "Animal destructor for " << type << " called." << std::endl;
 	return;
-
 }
 
 Animal & Animal::operator=( Animal const & rhs )
 {
-	std::cout << "Assignement Animal operator called. ";
+	std::cout << "Assignement Animal operator called.";
 	if (this != &rhs)
 	{
 		type = rhs.type;
@@ -40,12 +34,12 @@ std::string	Animal::getType( void ) const {return type;}
 
 void	Animal::makeSound() const
 {
-	// rewrite
+	std::cout << "Animal makes a specific sound!" << std::endl;
 	return;
 }
 
 std::ostream &	operator<<(std::ostream & o, Animal const & i )
 {
-	o << "Animal " << i.getType() << "." << std::endl;
+	o << "My type is " << i.getType() << "." << std::endl;
 	return o;
 }

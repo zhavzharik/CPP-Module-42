@@ -1,15 +1,19 @@
-NAME		=	animal
+NAME		=	animals
 
 CPP			=	c++
 SRCS		=	main.cpp		\
 				Animal.cpp		\
 				Dog.cpp			\
-				Cat.cpp
+				Cat.cpp			\
+				WrongAnimal.cpp	\
+				WrongCat.cpp
 
 
 HEAD		=	Animal.hpp		\
 				Dog.hpp			\
-				Cat.hpp
+				Cat.hpp			\
+				WrongAnimal.hpp	\
+				WrongCat.hpp
 
 
 FLAGS		=	-Wall -Wextra -Werror -std=c++98

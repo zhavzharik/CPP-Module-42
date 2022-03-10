@@ -7,10 +7,10 @@ Dog::Dog( void )
 	return;
 }
 
-Dog::Dog( Dog const & src )
+Dog::Dog( Dog const & src ) : Animal(src)
 {
 	std::cout << "Copy Dog constructor called" << std::endl;
-	*this = src;
+	this->type = src.type;
 	return;
 }
 
@@ -22,7 +22,7 @@ Dog::~Dog( void )
 
 Dog & Dog::operator=( Dog const & rhs )
 {
-	std::cout << "Assignement Dog operator called.";
+	std::cout << "Assignment Dog operator called.";
 	if (this != &rhs)
 	{
 		type = rhs.type;

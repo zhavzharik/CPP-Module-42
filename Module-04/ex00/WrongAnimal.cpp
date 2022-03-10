@@ -10,7 +10,7 @@ WrongAnimal::WrongAnimal( void )
 WrongAnimal::WrongAnimal( WrongAnimal const & src )
 {
 	std::cout << "Copy WrongAnimal constructor called" << std::endl;
-	*this = src;
+	type = src.type;
 	return;
 }
 
@@ -22,7 +22,7 @@ WrongAnimal::~WrongAnimal( void )
 
 WrongAnimal & WrongAnimal::operator=( WrongAnimal const & rhs )
 {
-	std::cout << "Assignement WrongAnimal operator called.";
+	std::cout << "Assignment WrongAnimal operator called.";
 	if (this != &rhs)
 	{
 		type = rhs.type;

@@ -23,22 +23,25 @@ int	main()
 
 	std::cout << std::endl << "********* Wrong animals *********" << std::endl << std::endl;
 
+	std::cout << "Case 1." << std::endl;
 	const WrongAnimal* w_meta = new WrongAnimal();
 	const WrongAnimal* w_i = new WrongCat();
 
+	std::cout << w_meta->getType() << " " << std::endl;
 	std::cout << w_i->getType() << " " << std::endl;
 	w_i->makeSound();
 	w_meta->makeSound();
 	std::cout << std::endl;
 
+	std::cout << "Case 2." << std::endl;
 	const WrongAnimal* w_j;
 
 	w_j = w_i;
 	std::cout << w_j->getType() << " " << std::endl;
 	w_j->makeSound();
-	w_meta->makeSound();
 	std::cout << std::endl;
 
+	std::cout << "Case 3." << std::endl;
 	const WrongAnimal* w_a = new WrongCat();
 
 	std::cout << w_a->getType() << " " << std::endl;

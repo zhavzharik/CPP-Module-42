@@ -3,13 +3,16 @@
 Brain::Brain( void )
 {
 	std::cout << "Default Brain constructor called." << std::endl;
+	for (int i = 0; i < 100; i++)
+		this->_ideas[i] = "My idea.";
 	return;
 }
 
 Brain::Brain( Brain const & src )
 {
 	std::cout << "Copy Brain constructor called" << std::endl;
-	*this = src;
+	for (int i = 0; i < 100; i++)
+		this->_ideas[i] = src._ideas[i];
 	return;
 }
 
@@ -21,14 +24,17 @@ Brain::~Brain()
 
 Brain & Brain::operator=(Brain const & rhs )
 {
-	int i = 0;
-
-	std::cout << "Assignement Brain operator called.";
+	std::cout << "Assignment Brain operator called.";
 	if (this != &rhs)
 	{
-		while ( i++ < 100)
-			_ideas[i] = rhs._ideas[i];
+		for (int i = 0; i < 100; i++)
+			this->_ideas[i] = rhs._ideas[i];
 	}
 	return *this;
+}
+
+std::string	Brain::getIdea( void ) const
+{
+	return this->_ideas[50];
 }
 

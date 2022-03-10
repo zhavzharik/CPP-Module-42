@@ -8,35 +8,40 @@ Cat::Cat( void )
 	return;
 }
 
-Cat::Cat( Cat const & src )
+Cat::Cat( Cat const & src ) : Animal(src)
 {
 	std::cout << "Copy Cat constructor called" << std::endl;
-	_ideasCat = new Brain();
-	_ideasCat = src._ideasCat;
-	type = src.getType();
+	this->type = src.getType();
+	this->_ideasCat = new Brain(*src._ideasCat);
+	
 	return;
 }
 
 Cat::~Cat( void )
 {
-	std::cout << "Cat destructor for " << type << " called." << std::endl;
 	delete _ideasCat;
+	std::cout << "Cat destructor for " << type << " called." << std::endl;
 	return;
 }
 
 Cat & Cat::operator=( Cat const & rhs )
 {
-	std::cout << "Assignement Cat operator called.";
+	std::cout << "Assignment Cat operator called.";
 	if (this != &rhs)
 	{
-		type = rhs.type;
-		_ideasCat = rhs._ideasCat;
+		this->type = rhs.type;
+		this->_ideasCat = new Brain(*rhs._ideasCat);
 	}
 	return *this;
 }
 
-void	Cat::makeSound() const
+void	Cat::makeSound( void ) const
 {
 	std::cout << "Cat meows!" << std::endl;
 	return;
+}
+
+void	Cat::printIdea( void ) const
+{
+	std::cout << _ideasCat->getIdea() << std::endl;
 }

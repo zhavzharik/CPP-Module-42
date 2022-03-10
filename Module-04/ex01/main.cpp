@@ -1,15 +1,15 @@
 #include "Dog.hpp"
 #include "Cat.hpp"
-#include "WrongCat.hpp"
 #include "Brain.hpp"
 
 
 int	main()
 {
+
+	std::cout << std::endl << "********* Array of animals *********" << std::endl;
+
 	int	N = 10;
 	int	i = 0;
-
-	std::cout << std::endl << "********* Right animals *********" << std::endl << std::endl;
 
 	Animal* animals[N];
 	while (i < N)
@@ -47,103 +47,39 @@ int	main()
 		i++;
 	}
 
-	/*std::cout << std::endl << "********* Copy constructor *********" << std::endl << std::endl;
+	std::cout << std::endl << "********* Copy constructor *********" << std::endl;
 
-	Animal* dog = new Dog();
-	Animal* dog_copy = dog;
+	std::cout << "Case 1. Dog copy." << std::endl;
+	Dog dog = Dog();
+	Dog dog_copy = dog;
 
-	std::cout << dog->getType() << " " << std::endl;
-	std::cout << dog_copy->getType() << " " << std::endl;
-	dog->makeSound();
-	dog_copy->makeSound();
+	std::cout << dog.getType() << " " << std::endl;
+	std::cout << dog_copy.getType() << " " << std::endl;
+	dog.makeSound();
+	dog_copy.makeSound();
 
-	delete dog;
-	Animal* animals_copy[N];
-	while (i < N)
-	{
-		std::cout << std::endl;
-		animals_copy[i] = animals[i];
-		i++;
-	}
-	i = 0;
-	while (i < N)
-	{
-		std::cout << std::endl;
-		animals_copy[i] = animals[i];
-		if (i % 2 == 0)
-			animals_copy[i] = new Dog();
-		else
-			animals_copy[i] = new Cat();
-		i++;
-	}
-	std::cout << std::endl;
+	dog.printIdea();
+	dog_copy.printIdea();
 
-	i = 0;
-	while (i < N)
-	{
-		std::cout << "Type of copy "<< i + 1 << " is " << animals_copy[i]->getType() << " " << std::endl;
-		i++;
-	}
-	std::cout << std::endl;
+	std::cout << "Case 2. Cat copy." << std::endl;
+	Cat cat = Cat();
+	Cat cat_copy = cat;
 
-	i = 0;
-	while (i < N)
-	{
-		animals_copy[i]->makeSound();
-		i++;
-	}
-	std::cout << std::endl;
+	std::cout << cat.getType() << " " << std::endl;
+	std::cout << cat_copy.getType() << " " << std::endl;
+	cat.makeSound();
+	cat_copy.makeSound();
 
-	i = 0;
-	while (i < N)
-	{
-		std::cout << std::endl;
-		delete animals_copy[i];
-		i++;
-	}
+	cat.printIdea();
+	cat_copy.printIdea();
 
-	i = 0;
-	while (i < N)
-	{
-		std::cout << std::endl;
-		delete animals[i];
-		i++;
-	}*/
+	std::cout << std::endl << "********* Case from subject *********" << std::endl;
 
-	std::cout << std::endl << "********* Wrong animals *********" << std::endl;
-
-	WrongAnimal* wrong_animals[N];
-	i = 0;
-	while (i < N)
-	{
-		std::cout << std::endl;
-		wrong_animals[i] = new WrongCat();
-		i++;
-	}
-	std::cout << std::endl;
-
-	i = 0;
-	while (i < N)
-	{
-		std::cout << "Type of "<< i + 1 << " object is " << wrong_animals[i]->getType() << " " << std::endl;
-		i++;
-	}
-	std::cout << std::endl;
-
-	i = 0;
-	while (i < N)
-	{
-		wrong_animals[i]->makeSound();
-		i++;
-	}
-	std::cout << std::endl;
-
-	i = 0;
-	while (i < N)
-	{
-		delete wrong_animals[i];
-		i++;
-	}
+	const Animal* j1 = new Dog();
+	const Animal* i1 = new Cat();
+	delete j1;
+	delete i1;
 
 	return 0;
 }
+	

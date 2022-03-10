@@ -15,6 +15,7 @@ public:
 	~Brain();
 
 	Brain & operator=(Brain const & rhs );
+	std::string getIdea( void ) const;
 };
 
 

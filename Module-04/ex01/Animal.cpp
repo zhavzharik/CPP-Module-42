@@ -10,8 +10,7 @@ Animal::Animal( void )
 Animal::Animal( Animal const & src )
 {
 	std::cout << "Copy Animal constructor called" << std::endl;
-	type = src.getType();
-	//*this = src;
+	this->type = src.getType();
 	return;
 }
 
@@ -23,7 +22,7 @@ Animal::~Animal( void )
 
 Animal & Animal::operator=( Animal const & rhs )
 {
-	std::cout << "Assignement Animal operator called.";
+	std::cout << "Assignment Animal operator called.";
 	if (this != &rhs)
 	{
 		type = rhs.type;

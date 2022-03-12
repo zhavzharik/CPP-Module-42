@@ -19,7 +19,7 @@ public:
 	Bureaucrat( Bureaucrat const & src );
 	~Bureaucrat();
 
-	Bureaucrat & operator=( Bureaucrat const & src );
+	Bureaucrat & operator=( Bureaucrat const & rhs );
 
 	std::string	getName( void ) const;
 	int			getGrade( void ) const;

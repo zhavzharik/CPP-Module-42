@@ -50,7 +50,7 @@ int main()
 	try
 	{
 		std::cout << "*************************" << std::endl;
-		std::cout << "Try to create form with grade required to sign in amount of 200." << std::endl;
+		std::cout << "Try to create form with grade required to sign in amount of 200 grade." << std::endl;
 		Form		y = Form("S-211", 200, 50);
 		std::cout << y << std::endl;
 	}
@@ -61,7 +61,7 @@ int main()
 	try
 	{
 		std::cout << "*************************" << std::endl;
-		std::cout << "Try to create form with grade required to execute in amount of 0." << std::endl;
+		std::cout << "Try to create form with grade required to execute in amount of 0 grade." << std::endl;
 		Form		y = Form("S-211", 100, 0);
 		std::cout << y << std::endl;
 	}

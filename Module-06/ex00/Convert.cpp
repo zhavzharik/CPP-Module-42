@@ -50,6 +50,54 @@ double	Convert::toDouble()
 	return static_cast<double>(getValue());
 }
 
+void Convert::displayChar()
+{
+	try
+	{
+		char ch = this->toChar();
+		std::cout << "char: '" << ch << "'" << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << "char: " << e.what() << std::endl;
+	}
+	return;
+}
+
+void	Convert::displayInt()
+{
+	try
+	{
+		int x = this->toInt();
+		std::cout << "int: " << x << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << "int: " << e.what() << std::endl;
+	}
+	return;
+}
+
+void	Convert::displayFloat()
+{
+	float f = this->toFloat();
+	if (f - static_cast<int>(f) != (float)0)
+		std::cout << "float: " << f << "f" << std::endl;
+	else
+		std::cout << "float: " << f << ".0f" << std::endl;
+	return;
+}
+
+void	Convert::displayDouble()
+{
+	double	d = this->toDouble();
+	if (d - static_cast<int>(d) != (double)0)
+		std::cout << "double: " << d << std::endl;
+	else
+		std::cout << "double: " << d << ".0" << std::endl;
+	return;
+}
+
 const char* Convert::ImpossibleException::what() const throw()
 {
 	return "impossible";

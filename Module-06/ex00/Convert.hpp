@@ -29,6 +29,11 @@ public:
 	float	toFloat();
 	double	toDouble();
 
+	void	displayChar();
+	void	displayInt();
+	void	displayFloat();
+	void	displayDouble();
+
 	class ImpossibleException : public std::exception
 	{
 		public:

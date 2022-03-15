@@ -24,9 +24,12 @@ int main()
 		std::cout << "Jim tries to execute form." << std::endl;
 		rrf->execute(jim);
 		std::cout << *rrf << std::endl << std::endl;
+		delete rrf;
 	}
 	catch(const std::exception& e)
 	{
+		if (rrf)
+			delete rrf;
 		std::cerr << e.what() << std::endl;
 	}
 	try
@@ -40,9 +43,12 @@ int main()
 		std::cout << "Jim tries to execute form." << std::endl;
 		rrf->execute(jim);
 		std::cout << *rrf << std::endl << std::endl;
+		delete rrf;
 	}
 	catch(const std::exception& e)
 	{
+		if (rrf)
+			delete rrf;
 		std::cerr << e.what() << std::endl;
 	}
 	try
@@ -56,6 +62,7 @@ int main()
 		std::cout << "Jim tries to execute form." << std::endl;
 		rrf->execute(jim);
 		std::cout << *rrf << std::endl << std::endl;
+		delete rrf;
 	}
 	catch(const std::exception& e)
 	{
@@ -66,12 +73,15 @@ int main()
 		std::cout << "************** NoNameForm **************" << std::endl;
 		rrf = someRandomIntern.makeForm("no name", "target");
 		std::cout << *rrf << std::endl << std::endl;
+		delete rrf;
 	}
 	catch(const std::exception& e)
 	{
 		std::cerr << e.what() << std::endl;
 	}
-	
-	
+
+	delete rrf;
+
+
 	return 0;
 }

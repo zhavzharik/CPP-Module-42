@@ -11,7 +11,8 @@ class Convert
 {
 private:
 
-	double	_value;
+	double		_value;
+	std::string	_str;
 
 public:
 
@@ -23,6 +24,7 @@ public:
 	Convert & operator=(Convert const & rhs );
 
 	double	getValue() const;
+	std::string getStr() const;
 
 	char	toChar();
 	int		toInt();

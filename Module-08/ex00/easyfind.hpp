@@ -9,8 +9,8 @@
 template< typename T >
 int easyfind(T & array, int nb)
 {
-	typename T::const_iterator	it;
-	
+	typename T::iterator	it;
+
 	it = std::find(array.begin(), array.end(), nb);
 	if ( it == array.end())
 		throw "This integer is not found!";

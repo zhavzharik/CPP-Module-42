@@ -1,13 +1,13 @@
 #include "Span.hpp"
 
-Span::Span() : N(0) {}
+Span::Span() : _N(0) {}
 
-Span::Span( unsigned int n ) : N(n) {}
+Span::Span( unsigned int n ) : _N(n) {}
 
 Span::Span( Span const & src )
 {
-	this->N = src.N;
-	this->vec = src.vec;
+	this->_N = src._N;
+	this->_vec = src._vec;
 	return;
 }
 
@@ -15,81 +15,61 @@ Span::~Span(){}
 
 Span & Span::operator=( Span const & rhs )
 {
-	this->N = rhs.N;
-	this->vec = rhs.vec;
+	this->_N = rhs._N;
+	this->_vec = rhs._vec;
 	return *this;
 }
 
-void	Span::addNumber(int nb) //rewrite
+int & Span::operator[]( unsigned int idx )
 {
-	if (vec.size() == this->N)
-		throw "Immpossible to add number!";
-	else
-		this->vec.push_back(nb);
+	if (idx >= this->_N || idx < 0)
+		throw IndexOutOfBoundsException();
+	return this->_vec[idx];
 }
 
-int		Span::findShortestSpan() //rewrite
+void	Span::addNumber(int nb)
+{
+	if (this->_vec.size() == this->_N)
+		throw ImpossibleToAddException();
+	else
+		this->_vec.push_back(nb);
+}
+
+int		Span::shortestSpan()
 {
 	int	res;
-	if (vec.size() < 2)
+	if (this->_vec.size() < 2)
 	{
 		throw NoDistanceException();
 	}
 	else
 	{
-		std::vector<int>::iterator	it = this->vec.begin();
-		std::vector<int>::iterator	ite = this->vec.end();
+		std::vector<int>::iterator	it = this->_vec.begin();
+		std::vector<int>::iterator	ite = this->_vec.end();
 		res = this->longestSpan();
-		for (*it; *it != *(ite - 1); ++*it)
+		for (*it; *it != *(ite - 1); *it++)
+		{
 			if (abs(*it - *(it + 1)) < res)
 				res = abs(*it - *(it + 1));
-	}
-	return res;
-}
-
-int		Span::findLongestSpan() //rewrite
-{
-	std::vector<int>::iterator min_nb;
-	std::vector<int>::iterator max_nb;
-	if (vec.size() < 2)
-	{
-		throw NoDistanceException();
-	}
-	else
-	{
-		min_nb = std::min_element(this->vec.begin(), this->vec.end());
-		max_nb = std::max_element(this->vec.begin(), this->vec.end());
-
-	}
-	return *max_nb - *min_nb;
-}
-
-int		Span::shortestSpan() //rewrite
-{
-	int res;
-	try
-	{
-		res = this->findShortestSpan();
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << std::endl;
+		}
 	}
 	return res;
 }
 
 int		Span::longestSpan()
 {
-	int res;
-	try
+	std::vector<int>::iterator min_nb;
+	std::vector<int>::iterator max_nb;
+	if (this->_vec.size() < 2)
 	{
-		res = this->findLongestSpan();
+		throw NoDistanceException();
 	}
-	catch(const std::exception& e)
+	else
 	{
-		std::cerr << e.what() << std::endl;
+		min_nb = std::min_element(this->_vec.begin(), this->_vec.end());
+		max_nb = std::max_element(this->_vec.begin(), this->_vec.end());
 	}
-	return res;
+	return *max_nb - *min_nb;
 }
 
 const char* Span::ImpossibleToAddException::what() const throw()
@@ -100,4 +80,16 @@ const char* Span::ImpossibleToAddException::what() const throw()
 const char* Span::NoDistanceException::what() const throw()
 {
 	return "Immpossible to find distance!";
+}
+
+const char* Span::IndexOutOfBoundsException::what() const throw()
+{
+	return "Index is out of bounds!";
+}
+
+void	decor_text(std::string text, std::string color, int nb)
+{
+	std::cout << color << std::setfill('*') << std::setw(nb) << std::endl << CLEAR << std::endl;
+	std::cout << color << std::setfill(' ') << std::setw((text.size() + (nb / 7))) << text << CLEAR;
+	std::cout << color << std::setfill('*') << std::setw(nb) << std::endl << CLEAR << std::endl;
 }

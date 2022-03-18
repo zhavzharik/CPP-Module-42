@@ -5,16 +5,17 @@
 # include <vector>
 # include <algorithm>
 # include <cmath>
+# include <iomanip>
+
+#define GREEN "\033[32m"
+#define CLEAR "\033[0m"
 
 class Span
 {
 private:
 
-	unsigned int N;
-
-protected:
-
-	std::vector<int>	vec;
+	unsigned int 		_N;
+	std::vector<int>	_vec;
 
 public:
 	Span();
@@ -23,10 +24,9 @@ public:
 	~Span();
 
 	Span & operator=( Span const & rhs );
+	int & 	operator[]( unsigned int idx );
 
 	void	addNumber(int nb);
-	int		findShortestSpan();
-	int		findLongestSpan();
 	int		shortestSpan();
 	int		longestSpan();
 
@@ -40,9 +40,24 @@ public:
 		public:
 			virtual const char* what() const throw();
 	};
+
+	class IndexOutOfBoundsException : public std::exception
+	{
+	public:
+		virtual const char* what() const throw();
+	};
+
+	template< typename T >
+	void	addNumber(T begin, T end )
+	{
+		if (this->_vec.size() == static_cast<unsigned long>(std::distance(begin, end)))
+			throw ImpossibleToAddException();
+		for (std::vector<int>::iterator it = begin; it != end; it++)
+			this->_vec.push_back(*it);
+	}
 };
 
-
+void	decor_text(std::string text, std::string color, int nb);
 
 
 #endif

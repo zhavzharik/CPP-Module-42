@@ -2,6 +2,7 @@
 
 int	main()
 {
+	int width = 35;
 	std::list<int>	lst;
 	int	nb;
 
@@ -13,10 +14,10 @@ int	main()
 	lst.push_back(75);
 	lst.push_back(99);
 
-	std::cout << "***** List of integers ******" << std::endl;
+	decor_text("List of integers", GREEN, width);
 	for_each(lst.begin(), lst.end(), displayInt);
 
-	std::cout << std::endl << "****** Try to find 48 ******" << std::endl;
+	decor_text("Try to find 48", GREEN, width);
 	try
 	{
 		nb = easyfind(lst, 48);
@@ -24,9 +25,10 @@ int	main()
 	}
 	catch(char const * err)
 	{
-		std::cerr << err << std::endl;
+		std::cerr << err;
 	}
-	std::cout << std::endl << "****** Try to find 100 ******" << std::endl;
+
+	decor_text("Try to find 100", GREEN, width);
 	try
 	{
 		nb = easyfind(lst, 100);
@@ -34,11 +36,11 @@ int	main()
 	}
 	catch(char const * err)
 	{
-		std::cerr << err << std::endl;
+		std::cerr << err;
 	}
 
 	std::vector<int>	vec;
-	
+
 	vec.push_back(12);
 	vec.push_back(24);
 	vec.push_back(51);
@@ -47,10 +49,10 @@ int	main()
 	vec.push_back(57);
 	vec.push_back(99);
 
-	std::cout << std::endl << "****** Vector of integers ******" << std::endl;
+	decor_text("Vector of integers", GREEN, width);
 	for_each(vec.begin(), vec.end(), displayInt);
 
-	std::cout << std::endl << "****** Try to find 13 *******" << std::endl;
+	decor_text("Try to find 13", GREEN, width);
 	try
 	{
 		nb = easyfind(vec, 13);
@@ -60,7 +62,8 @@ int	main()
 	{
 		std::cerr << err << std::endl;
 	}
-	std::cout << std::endl << "***** Try to find 100 *****" << std::endl;
+
+	decor_text("Try to find 100", GREEN, width);
 	try
 	{
 		nb = easyfind(vec, 100);
@@ -70,7 +73,7 @@ int	main()
 	{
 		std::cerr << err << std::endl;
 	}
-	
+
 	return 0;
 
 }

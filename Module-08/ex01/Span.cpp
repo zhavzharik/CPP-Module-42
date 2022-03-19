@@ -89,7 +89,12 @@ const char* Span::IndexOutOfBoundsException::what() const throw()
 
 void	decor_text(std::string text, std::string color, int nb)
 {
+	int f;
+	if (static_cast<unsigned long>(nb) > text.size())
+		f = (nb - text.size()) / 2;
+	else
+		f = 0;
 	std::cout << color << std::setfill('*') << std::setw(nb) << std::endl << CLEAR << std::endl;
-	std::cout << color << std::setfill(' ') << std::setw((text.size() + (nb / 7))) << text << CLEAR;
+	std::cout << color << std::setfill(' ') << std::setw(f + text.size()) << text << CLEAR;
 	std::cout << color << std::setfill('*') << std::setw(nb) << std::endl << CLEAR << std::endl;
 }

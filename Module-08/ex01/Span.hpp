@@ -50,10 +50,17 @@ public:
 	template< typename T >
 	void	addNumber(T begin, T end )
 	{
-		if (this->_vec.size() == static_cast<unsigned long>(std::distance(begin, end)))
+		unsigned long d = std::distance(begin, end);
+
+		if (this->_vec.size() >= static_cast<unsigned long>(std::distance(begin, end)))
 			throw ImpossibleToAddException();
 		for (std::vector<int>::iterator it = begin; it != end; it++)
+		{
+			if (this->_vec.size() == this->_N && d > 0 )
+				throw ImpossibleToAddException();
 			this->_vec.push_back(*it);
+			d--;
+		}
 	}
 };
 

@@ -60,10 +60,17 @@ int	main()
 		mySpan10000.push_back(std::rand() % 25782);
 	}
 
-	Span spMySpan10000(10000);
-	spMySpan10000.addNumber(mySpan10000.begin(), mySpan10000.end());
-	std::cout << spMySpan10000.shortestSpan() << std::endl;
-	std::cout << spMySpan10000.longestSpan();
+	try
+	{
+		Span spMySpan10000(10000);
+		spMySpan10000.addNumber(mySpan10000.begin(), mySpan10000.end());
+		std::cout << spMySpan10000.shortestSpan() << std::endl;
+		std::cout << spMySpan10000.longestSpan();
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what();
+	}
 
 	decor_text("Fill Span with 7 integers using a range of iterators and find distance", GREEN, width);
 	std::vector<int> mySpan;
@@ -75,14 +82,23 @@ int	main()
 	mySpan.push_back(37);
 	mySpan.push_back(47);
 
-	Span spMySpan(7);
-	spMySpan.addNumber(mySpan.begin(), mySpan.end());
-	std::cout << "Integers in Span: ";
-	for (int i = 0; i < 7; i++)
-		std::cout << spMySpan[i] << " ";
-	std::cout << std::endl;
-	std::cout << spMySpan.shortestSpan() << std::endl;
-	std::cout << spMySpan.longestSpan();
+	try
+	{
+		Span spMySpan(7);
+		spMySpan.addNumber(mySpan.begin(), mySpan.end());
+		std::cout << "Integers in Span: ";
+		for (int i = 0; i < 7; i++)
+			std::cout << spMySpan[i] << " ";
+		std::cout << std::endl;
+		std::cout << spMySpan.shortestSpan() << std::endl;
+		std::cout << spMySpan.longestSpan();
+		decor_text("Try to add in Span 7 more integers using a range of iterators and find distance", GREEN, width);
+		spMySpan.addNumber(mySpan.begin(), mySpan.end());
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what();
+	}
 
 	decor_text("Fill Span with 20 000 integers using a range of iterators and find distance", GREEN, width);
 	std::vector<int> mySpan20000;
@@ -92,10 +108,17 @@ int	main()
 		mySpan20000.push_back(std::rand() % 45782);
 	}
 
-	Span spMySpan20000(20000);
-	spMySpan20000.addNumber(mySpan20000.begin(), mySpan20000.end());
-	std::cout << spMySpan20000.shortestSpan() << std::endl;
-	std::cout << spMySpan20000.longestSpan() << std::endl;
+	try
+	{
+		Span spMySpan20000(20000);
+		spMySpan20000.addNumber(mySpan20000.begin(), mySpan20000.end());
+		std::cout << spMySpan20000.shortestSpan() << std::endl;
+		std::cout << spMySpan20000.longestSpan() << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what();
+	}
 
 	return 0;
 }
